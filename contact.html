@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fut-Tech — Contact</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-pap... (truncated for brevity)" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Fut‑Tech</h1>
+          <p>Engineering tomorrow's digital experiences</p>
+        </div>
+      </div>
+
+     <nav>
+  <ul>
+    <li><a href="index.html" data-page="index">Home</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+    <li><a href="contact.html" data-page="contact">Contact</a></li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main>
+      <section class="contact-section">
+        <h2>Contact & Request a Quote</h2>
+        <p class="lead">Tell us about your project — we'll respond within one business day.</p>
+
+        <div class="contact-grid">
+          <form class="card" id="contact-form" onsubmit="return false;">
+            <h3>Get in touch</h3>
+            <div class="form-field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="name@company.com" required>
+            </div>
+            <div class="form-field">
+              <label for="company">Company</label>
+              <input id="company" name="company" placeholder="Your company (optional)">
+            </div>
+            <div class="form-field">
+              <label for="message">Project summary</label>
+              <textarea id="message" name="message" rows="5" placeholder="Briefly describe your project" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn primary" id="send">Send request</button>
+              <small>Or email us at hello@fut-tech</small>
+            </div>
+            <div id="form-result"></div>
+          </form>
+
+          <aside class="card">
+            <h3>Office & Contact</h3>
+            <p>Fut‑Tech Ltd<br>Lagos mainland, Nigeria<br><a href="mailto"futtech15@gmail.com><b>E-mail us</b></a></p>
+
+            <h4>Services we frequently deliver</h4>
+            <ul>
+              <li>Custom web platforms</li>
+              <li>Cloud migrations</li>
+              <li>E-commerce website</li>
+              <li>Online courses</li>
+    
+            </ul>
+
+            <h4>Languages</h4>
+            <div class="languages">
+              <button class="btn ghost" data-lang="en">EN</button>
+              <button class="btn ghost" data-lang="fr">FR</button>
+              <button class="btn ghost" data-lang="es">ES</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div class="social-handles">
+  <h3>Connect with Us</h3>
+  <div class="social-buttons">
+    <a href="https://wa.me/2349065060855" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:+2349065060855" class="social-btn call"><i class="fas fa-phone"></i></a>
+    <a href="https://twitter.com/YourHandle" target="_blank" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://linkedin.com/" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin"></i></a>
+    <a href="https://facebook.com/profile.php?id=61576610654628" target="_blank" class="social-btn facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/futtech_future?igsh=MTIsYmFnNHYzdWtoaQ==" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+  </div>
+</div>
+
+
+
+    <footer>
+      <div>&copy; <span id="year"></span> Fut‑Tech. All rights reserved.</div>
+      <div>
+        <a href="Privacy.html">Privacy</a> | 
+        <a href="Terms.html">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple form handler
+    document.getElementById('send').addEventListener('click', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const resultEl = document.getElementById('form-result');
+
+      if(!name || !email || !message){
+        resultEl.textContent = 'Please fill in all required fields.';
+        resultEl.style.color = 'var(--accent-a)';
+        return;
+      }
+
+      resultEl.textContent = 'Sending...';
+      setTimeout(()=>{
+        resultEl.textContent = 'Thanks — your request has been received. We will reply within 1 business day.';
+        document.getElementById('contact-form').reset();
+      },900);
+    });
+
+    // Language buttons stub
+    document.querySelectorAll('[data-lang]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const lang = btn.getAttribute('data-lang');
+        alert('Language switch stub — selected: ' + lang);
+      });
+    });
+
+    // =======================
+// ACTIVE NAV HIGHLIGHT
+// =======================
+
+const currentPage = window.location.pathname.split("/").pop().replace(".html","") || "index";
+
+document.querySelectorAll("nav a").forEach(link => {
+  if (link.dataset.page === currentPage) {
+    link.classList.add("active");
+  }
+});
+
+  </script>
+</body>
+</html>

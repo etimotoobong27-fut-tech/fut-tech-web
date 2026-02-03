@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fut-Tech — Privacy Policy</title>
+  <link rel="stylesheet" href="about.css">
+  <style>
+    :root{
+      --bg:#0f1724; 
+      --card:#0b1220; 
+      --muted:#9aa4b2; 
+      --accent-a:#6ee7b7; 
+      --accent-b:#60a5fa; 
+      --radius:14px; 
+      --mono: 'Poppins', system-ui, -apple-system;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html,body{height:100%;font-family:var(--mono);background:linear-gradient(180deg,#071021 0%,#071628 45%,#081226 100%);color:#eef2f7;}
+    .container{max-width:1200px;margin:0 auto;padding:40px 24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand h1{font-size:1.05rem;margin:0}
+    .brand p{margin:0;font-size:0.78rem;color:var(--muted)}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem}
+    nav a.active{color:var(--accent-a);}
+    nav a.cta{background:linear-gradient(90deg,var(--accent-a),var(--accent-b));padding:10px 14px;border-radius:10px;color:#021426}
+
+    main{padding:48px 0;}
+    h1,h2,h3{color:#eef2f7;margin-bottom:16px;}
+    p, li{color:var(--muted);margin-bottom:12px;font-size:0.95rem;line-height:1.6;}
+    ul{padding-left:20px;list-style:disc;}
+    footer{
+      margin-top:48px;
+      padding:24px 0;
+      border-top:1px dashed rgba(255,255,255,0.03);
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    @media(max-width:900px){
+      nav ul{flex-direction:column;gap:12px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Fut-Tech</h1>
+          <p>Engineering tomorrow's digital experiences</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-page="index">Home</a></li>
+          <li><a href="services.html" data-page="services">Services</a></li>
+          <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
+          <li><a href="about.html" data-page="about">About</a></li>
+          <li><a href="privacy.html" data-page="privacy" class="active">Privacy</a></li>
+          <li><a href="contact.html" data-page="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="privacy-section">
+        <h1>Privacy Policy</h1>
+        <p>At Fut-Tech, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you interact with our website or services.</p>
+
+        <h2>Information We Collect</h2>
+        <ul>
+          <li><strong>Personal Information:</strong> Name, email address, and contact details when you submit forms or subscribe.</li>
+          <li><strong>Usage Data:</strong> Information on how you use our website, including pages visited, time spent, and interactions.</li>
+          <li><strong>Cookies:</strong> Small files stored on your device to improve user experience and analytics.</li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+        <ul>
+          <li>To provide and improve our services, respond to inquiries, and communicate updates.</li>
+          <li>To personalize your experience and optimize our website content.</li>
+          <li>To ensure security and prevent fraudulent activity.</li>
+        </ul>
+
+        <h2>Data Sharing & Security</h2>
+        <p>We do not sell or rent your personal information. We may share data with trusted service providers who assist us in operating the website, conducting business, or servicing you, under strict confidentiality agreements.</p>
+
+        <h2>Your Choices</h2>
+        <ul>
+          <li>You may opt out of marketing communications at any time by clicking unsubscribe or contacting us directly.</li>
+          <li>You can disable cookies in your browser settings, but some features of our website may not function properly.</li>
+        </ul>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this Privacy Policy periodically. Any changes will be posted on this page with the updated date.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions or concerns about your privacy, please contact us at <a href="mailto:privacy@fut-tech.com">privacy@fut-tech.com</a>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <div>&copy; <span id="year"></span> Fut-Tech. All rights reserved.</div>
+      <div>
+        <a href="Terms.html">T&C</a> | 
+        <a href="About.html">About</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Active nav highlight
+    const currentPage = window.location.pathname.split("/").pop().replace(".html","") || "index";
+    document.querySelectorAll("nav a").forEach(link => {
+      if(link.dataset.page === currentPage) link.classList.add("active");
+    });
+  </script>
+</body>
+</html>

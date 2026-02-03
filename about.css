@@ -1,0 +1,232 @@
+:root{
+  --bg:#0f1724; 
+  --card:#0b1220; 
+  --muted:#9aa4b2; 
+  --accent-a:#6ee7b7; 
+  --accent-b:#60a5fa; 
+  --radius:14px; 
+  --mono: 'Poppins', system-ui, -apple-system;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;font-family:var(--mono);background:linear-gradient(180deg,#071021 0%,#071628 45%,#081226 100%);color:#eef2f7;}
+.container{max-width:1200px;margin:0 auto;padding:40px 24px}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand h1{font-size:1.05rem;margin:0}
+.brand p{margin:0;font-size:0.78rem;color:var(--muted)}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a.active{color:var(--accent-b);}
+nav a.cta{background:linear-gradient(90deg,var(--accent-a),var(--accent-b));padding:10px 14px;border-radius:10px;color:#021426}
+
+/* About Section */
+.about-section{padding:48px 0}
+.about-section h2{font-size:2rem;margin-bottom:8px}
+.about-section .lead{color:var(--muted);margin-bottom:24px}
+
+/* About container (text + carousel) */
+.about-container{
+  display:flex;
+  gap:32px;
+  flex-wrap:wrap;
+  align-items:flex-start;
+}
+
+.about-text{
+  flex:1;
+  min-width:280px;
+}
+
+/* Brain Behind Carousel */
+.brain-behind{
+  width:360px;
+  flex-shrink:0;
+}
+
+/* Carousel container */
+.carousel{
+  position: relative;
+  width:100%;
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--card);
+  min-height:220px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Slide image fills the width and height of the carousel while maintaining aspect ratio */
+.slide img {
+  width: 100%;
+  height: 180px; /* adjust depending on your carousel height */
+  object-fit: cover; /* ensures the image covers the box without distortion */
+  border-radius: 12px;
+}
+
+
+/* Each slide */
+.slide{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:12px;
+  opacity:0;
+  position:absolute;
+  width:100%;
+  transition:opacity 0.8s ease-in-out;
+  box-sizing:border-box;
+  padding:16px;
+}
+
+.slide.active{
+  opacity:1;
+  position:relative;
+}
+
+/* Slide image */
+.slide img{
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+/* Slide bio under image */
+.slide .bio{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  color:#eef2f7;
+}
+
+.slide .bio h3{
+  margin:0 0 6px 0;
+  font-size:1.1rem;
+}
+
+.slide .bio p{
+  margin:0;
+  font-size:0.88rem;
+  color:var(--muted);
+}
+
+/* Carousel dots */
+.carousel-dots{
+  text-align:center;
+  margin-top:12px;
+  position:relative;
+}
+
+.carousel-dots span{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin:0 4px;
+  background:rgba(255,255,255,0.3);
+  border-radius:50%;
+  cursor:pointer;
+  transition:background 0.3s;
+}
+
+.carousel-dots span.active{
+  background:var(--accent-a);
+}
+
+/* Carousel arrows */
+.carousel-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.3);
+  color:#eef2f7;
+  border:none;
+  font-size:1.5rem;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+}
+
+.carousel-arrow.left{left:8px;}
+.carousel-arrow.right{right:8px;}
+.carousel-arrow:hover{background:rgba(0,0,0,0.5);}
+
+/* Cards below */
+.about-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-top:32px;
+}
+
+.about-grid .card{
+  background:var(--card);
+  padding:18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+.about-grid .card h3{
+  margin-bottom:6px;
+}
+
+.about-grid .card p,
+.about-grid .card ul{
+  color:var(--muted);
+  font-size:0.95rem;
+  margin-top:4px;
+}
+
+.about-grid .card ul{
+  padding-left:16px;
+  list-style:disc;
+}
+
+/* Footer */
+footer{
+  margin-top:48px;
+  padding:24px 0;
+  border-top:1px dashed rgba(255,255,255,0.03);
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .about-container{
+    flex-direction:column;
+    align-items:center;
+  }
+  .brain-behind{
+    width:100%;
+  }
+
+.carousel {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* so image is at top */
+  padding: 16px;
+  min-height: 260px; /* adjust so image + bio fit nicely */
+}

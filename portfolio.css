@@ -1,0 +1,60 @@
+:root{
+  --bg:#0f1724; 
+  --card:#0b1220; 
+  --muted:#9aa4b2; 
+  --accent-a:#6ee7b7; 
+  --accent-b:#60a5fa; 
+  --radius:14px; 
+  --mono: 'Poppins', system-ui, -apple-system;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;font-family:var(--mono);background:linear-gradient(180deg,#071021 0%,#071628 45%,#081226 100%);color:#eef2f7;}
+.container{max-width:1200px;margin:0 auto;padding:40px 24px}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand h1{font-size:1.05rem;margin:0}
+.brand p{margin:0;font-size:0.78rem;color:var(--muted)}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a.cta{background:linear-gradient(90deg,var(--accent-a),var(--accent-b));padding:10px 14px;border-radius:10px;color:#021426}
+
+/* Portfolio */
+.portfolio-section{padding:48px 0}
+.portfolio-section h2{font-size:2rem;margin-bottom:8px}
+.portfolio-section .lead{color:var(--muted);margin-bottom:24px}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+
+.tile{position:relative;border-radius:12px;overflow:hidden;min-height:140px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);}
+.tile img{width:100%;height:100%;object-fit:cover;display:block;}
+.tile .meta{position:absolute;left:12px;bottom:12px;color:#fff;font-size:0.85rem;}
+.tile .meta strong{display:block;font-size:1rem;margin-bottom:2px}
+
+/* Footer */
+footer{margin-top:48px;padding:24px 0;border-top:1px dashed rgba(255,255,255,0.03);color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+
+/* Responsive */
+@media(max-width:900px){
+  nav ul{flex-wrap:wrap}
+  .portfolio-grid{grid-template-columns:1fr}
+  header,footer{flex-direction:column;align-items:flex-start}
+}
+
+nav ul li a.active {
+  color: #00d1ff;
+  font-weight: 600;
+  position: relative;
+}
+
+nav ul li a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #00d1ff;
+  border-radius: 20px;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fut-Tech — Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fut-Tech logo">
+            <rect x="6" y="6" width="52" height="52" rx="10" fill="white" fill-opacity="0.08" />
+            <path d="M16 40 L28 25 L36 34 L48 18" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Fut‑Tech</h1>
+          <p>Engineering tomorrow's digital experiences</p>
+        </div>
+      </div>
+
+    <nav>
+  <ul>
+    <li><a href="index.html" data-page="index">Home</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+    <li><a href="contact.html" data-page="contact">Contact</a></li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Main introduction">
+        <div class="hero-text">
+          <span class="eyebrow">Trusted • Secure • Global</span>
+
+          <h2 id="typed-text">We build secure, scalable digital products for enterprises and startups.</h2>
+          <p class="lead">Fut‑Tech combines software engineering, cloud architecture, training and hardware solutions to help organisations transform fast — without compromising quality or security.</p>
+          <div class="actions">
+            <a href="contact.html" class="btn primary">Request a Quote</a>
+            <a href="portfolio.html" class="btn ghost">See Portfolio</a>
+          </div>
+
+          <div class="stats">
+            <strong>Global clients</strong>
+            <span>200+ across 18 countries</span>
+          </div>
+        </div>
+
+        <aside class="visual" aria-hidden="true">
+          <div class="pulse"></div>
+          <div class="mock">
+            <div class="device">
+              <svg width="180" height="96" viewBox="0 0 360 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="356" height="188" rx="10" fill="url(#g)" stroke="rgba(255,255,255,0.03)"/>
+                <defs>
+                  <linearGradient id="g" x1="0" x2="1">
+                    <stop stop-color="#042434" offset="0"/>
+                    <stop stop-color="#052a3b" offset="1"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <small>Interactive dashboards · Secure APIs · Managed hosting</small>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer>
+      <div>&copy; <span id="year"></span> Fut‑Tech. All rights reserved.</div>
+      <div>
+        <a href="Privacy.html">Privacy</a> | 
+        <a href="Terms.html">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll fade-in animation
+const fadeElements = document.querySelectorAll('.fade-in, .fade-in-on-scroll');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, {threshold:0.2});
+
+fadeElements.forEach(el => observer.observe(el));
+
+// Smooth scroll only for # links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const target = document.querySelector(a.getAttribute("href"));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+// Optional: Floating numbers animation for "Global clients" stat
+const clientsEl = document.querySelector(".hero div strong");
+if(clientsEl){
+  let count = 0;
+  const target = 200;
+  const interval = setInterval(()=>{
+    if(count < target){
+      count += 2;
+      clientsEl.textContent = count + "+";
+    } else clearInterval(interval);
+  },20);
+}
+
+// =======================
+// ACTIVE NAV HIGHLIGHT
+// =======================
+
+const currentPage = window.location.pathname.split("/").pop().replace(".html","") || "index";
+
+document.querySelectorAll("nav a").forEach(link => {
+  if (link.dataset.page === currentPage) {
+    link.classList.add("active");
+  }
+});
+/* ==========================================
+   Fut-Tech Premium Typing Animation
+========================================== */
+
+const text = "We build secure, scalable digital products for enterprises and startups.";
+const typedEl = document.getElementById("typed-text");
+
+let index = 0;
+
+function typeEffect() {
+  // human-like random speed
+  const speed = 40 + Math.random() * 60;
+
+  if (index < text.length) {
+    typedEl.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, speed);
+  } else {
+    // typing finished
+    typedEl.classList.add("finished");
+  }
+}
+
+window.addEventListener("load", () => {
+  typedEl.textContent = "";
+  typedEl.style.opacity = "1";    // fade in before typing
+  setTimeout(typeEffect, 300);     // small delay before start
+});
+
+
+  </script>
+</body>
+</html>

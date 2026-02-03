@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fut-Tech — Services</title>
+  <link rel="stylesheet" href="services.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Fut‑Tech</h1>
+          <p>Engineering tomorrow's digital experiences</p>
+        </div>
+      </div>
+
+    <nav>
+  <ul>
+    <li><a href="index.html" data-page="index">Home</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+    <li><a href="contact.html" data-page="contact">Contact</a></li>
+
+  </ul>
+</nav>
+
+    </header>
+
+    <main>
+      <section class="services-section">
+        <h2>Our Services</h2>
+        <p class="lead">End-to-end solutions tailored for modern organisations — from prototypes to global deployments.</p>
+
+        <div class="services-grid">
+          <article class="card">
+
+            <h3>Web & Mobile Development</h3>
+            <p>Custom full-stack applications, Progressive Web Apps (PWA), native & cross-platform mobile apps with strong UX.</p>
+          </article>
+
+          <article class="card">
+            <h3>Cloud Architecture & DevOps</h3>
+            <p>Scalable multi-region deployments, CI/CD pipelines, IaC, cost optimisation and SRE practices.</p>
+          </article>
+
+          <article class="card">
+            <h3>Security & Compliance</h3>
+            <p>Threat modelling, secure coding, sensitive-data handling, ISO / SOC readiness and penetration testing.</p>
+          </article>
+
+          <article class="card">
+            <h3>Training & Capacity Building</h3>
+            <p>Hands-on workshops, corporate upskilling, custom curricula for engineering teams and digital leaders.</p>
+          </article>
+
+          <article class="card">
+            <h3>Hardware & IoT Integration</h3>
+            <p>Device prototyping, embedded software, secure telemetry and edge-to-cloud integration.</p>
+          </article>
+
+          <article class="card">
+            <h3>UX Design & Branding</h3>
+            <p>Brand identity, product design, motion prototypes and graphic assets ready for production.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>&copy; <span id="year"></span> Fut‑Tech. All rights reserved.</div>
+      <div>
+        <a href="Privacy.html">Privacy</a> | 
+        <a href="Terms.html">Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    /* ===========================
+   Services Page JS Enhancements
+=========================== */
+
+// Scroll fade-in animation
+const fadeElements = document.querySelectorAll('.fade-in, .fade-in-on-scroll');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, {threshold:0.2});
+
+fadeElements.forEach(el => observer.observe(el));
+
+// Accordion toggle for "More Info" inside cards (if you add expandable details)
+document.querySelectorAll('.services .card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('active');
+  });
+});
+
+// Optional: Scroll-based staggered animation for services cards
+const serviceCards = document.querySelectorAll('.services .card');
+serviceCards.forEach((card, idx) => {
+  card.style.transitionDelay = (idx * 0.1) + "s";
+});
+
+// =======================
+// ACTIVE NAV HIGHLIGHT
+// =======================
+
+const currentPage = window.location.pathname.split("/").pop().replace(".html","") || "index";
+
+document.querySelectorAll("nav a").forEach(link => {
+  if (link.dataset.page === currentPage) {
+    link.classList.add("active");
+  }
+});
+
+
+  </script>
+</body>
+</html>
